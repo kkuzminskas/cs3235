@@ -28,3 +28,5 @@ Definitions of some terms:
 * FP = False positive 
 
 
+### Validation Techniques
+Given the fact that we will probably have a low number of data points, using bootstrapping is statistically the best validation method. It is often used with very small datasets (less than 300 instances).

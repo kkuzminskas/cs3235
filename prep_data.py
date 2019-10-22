@@ -52,3 +52,10 @@ print(pd_data.columns.values.tolist())
 print(pd_data.shape)
 
 np_data = pd_data.to_numpy()
+
+features = np.array(pd_data.columns.values.tolist())
+remove_feat = ["fix", "time", "timestamp", "state"]
+features = list(filter(lambda f: f not in remove_feat, features))
+print(features)
+# cleaned data with only float valued features
+X = pd_data[features]

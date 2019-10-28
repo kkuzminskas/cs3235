@@ -1,0 +1,21 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form > * {
+    margin-bottom: 16px;
+}
+
+label > input {
+    margin-left: 4px;
+}
+
+input:last-child {
+    margin-bottom: 0;
+}
+
+.buttons-wrapper > * {
+    margin: 0 8px;
+}

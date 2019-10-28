@@ -1,0 +1,12 @@
+html, body, #root {
+  height: 100%;
+  overflow: auto;
+}
+
+.centralize {
+  text-align: center;
+}
+
+.failure {
+  color: red;
+}

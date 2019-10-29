@@ -1,0 +1,45 @@
+<!-- extend from base layout -->
+{% extends "base.html" %}
+
+{% block pagestyles %}
+    <link rel="stylesheet" href='/static/login.css' />
+{% endblock %}
+
+{% block content %}
+<body>
+    <div class="box">
+        <center><h1><u>Login</u></h1></center>
+
+        <div class="innerbox">
+            <form action="" method="post" novalidate>
+                {{ form.hidden_tag() }}
+
+                {{ form.username.label }}<br>
+                {{ form.username(size=32) }}<br><br>
+
+
+                {{ form.password.label }}<br>
+                <button type="button" class="button-style" onclick="window.location.href='{{ url_for('recording') }}';">Start Recording</button><br><br>
+
+
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <span style="color:red">{{ message }}</span><br><br>
+                    {% endfor %}
+                
+                {% endif %}
+                {% endwith %}
+
+                <!-- {{ form.password(size=32) }}<br><br> -->
+
+                <br><br>
+                <center>
+                    {{ form.submit(class_="button-style-login") }}
+                    <br>
+                </center>
+            </form>
+        </div>
+    </div>
+</body>
+{% endblock %}

@@ -14,7 +14,6 @@ def transform_file(file_name="eyetribe_output_copy.txt"):
     file.write('{"all": [\n' + content)
     file.close()
 
-
 # Get data
 def empty_list(prev_key, keys, final_output, val):
     prev_key_init = prev_key
@@ -42,6 +41,8 @@ def transform_vals(prev_key, keys, final_output, val):
 
 
 def clean_data(file_name="eyetribe_output_test.txt"):
+    transform_file(file_name)
+
     files = open(file_name, "r")
     data = files.read()
     d2 = json.loads(data)
@@ -70,6 +71,5 @@ def clean_data(file_name="eyetribe_output_test.txt"):
 if __name__ == '__main__':
     # get data
     # data = clean_data("eyetribe_output_copy.txt")
-    transform_file()
     data = clean_data("eyetribe_output_copy.txt")
     

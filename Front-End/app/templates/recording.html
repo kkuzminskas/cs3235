@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block pagestyles %}
+    <link rel="stylesheet" href='/static/recordpassword.css' />
+{% endblock %}
+
+{% block content %}
+	<div class="grid-container">
+	  <div class="grid-item" style="border:1.5px solid #1c1c1c">
+	  	<div id="item">1</div>
+	  </div>
+	  <div class="grid-item" style="border-top:1.5px solid #1c1c1c; border-bottom:1.5px solid #1c1c1c">
+	  	<div id="item">2</div>
+	  </div>
+	  <div class="grid-item" style="border:1.5px solid #1c1c1c">
+	  	<div id="item">3</div>
+	  </div>  
+	  <div class="grid-item" style="border-left:1.5px solid #1c1c1c; border-right:1.5px solid #1c1c1c">
+	  	<div id="item">4</div>
+	  </div>
+	  <div class="grid-item">
+	  	<div id="item">5</div>
+	  </div>
+	  <div class="grid-item" style="border-right:1.5px solid #1c1c1c; border-left:1.5px solid #1c1c1c">
+	  	<div id="item">6</div>
+	  </div>
+	  <div class="grid-item" style="border:1.5px solid #1c1c1c">
+	  	<div id="item">7</div>
+	  </div>
+	  <div class="grid-item" style="border-bottom:1.5px solid #1c1c1c; border-top:1.5px solid #1c1c1c">
+	  	<div id="item">8</div>
+	  </div>
+	  <div class="grid-item" style="border:1.5px solid #1c1c1c">
+	  	<div id="item">9</div>
+	  </div>
+	</div>
+
+	<div class="button">
+	<center><button type="button" class="button-style" onclick="window.location.href='{{ url_for('login') }}';">Stop Recording</button></center>
+	</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block pagestyles %}
+    <link rel="stylesheet" href='/static/login_success.css' />
+{% endblock %}
+
+{% block content %}
+	<div>
+    	<h1>Welcome, {{ current_user.username }}!</h1>
+    	<a href="/logout">Logout</a>
+	</div>
+{% endblock %}

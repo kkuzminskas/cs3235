@@ -1,0 +1,17 @@
+<html>
+  <head>
+    {% block pagestyles %}{% endblock %}
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,600" rel="stylesheet">
+
+    {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>Eye Tracker</title>
+    {% endif %}
+  </head>
+
+  <body>
+    {% block content %}{% endblock %}
+  </body>
+</html>

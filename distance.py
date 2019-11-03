@@ -1,4 +1,4 @@
-simport prep_data
+import prep_data
 import json
 import numpy as np
 import os

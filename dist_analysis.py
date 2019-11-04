@@ -28,6 +28,7 @@ def determine_thresholds():
 
 def test_with_files(test_files, test_labels, raw_thresholds, avg_thresholds):
     def find_metrics(class_labels):
+
         positives = np.sum(class_labels)
         true_positives = np.sum(np.logical_and(
             test_labels == 1, class_labels == 1))
@@ -38,7 +39,7 @@ def test_with_files(test_files, test_labels, raw_thresholds, avg_thresholds):
             test_labels == 0, class_labels == 0))
         false_negatives = negatives - true_negatives
 
-        precision = true_positives / positives
+        precision = true_positives / positives if positives != 0 else 1
         accuracy = (true_negatives + true_positives) / (positives + negatives)
         return true_positives, false_positives, true_negatives, false_negatives, accuracy, precision
 
@@ -51,20 +52,32 @@ def test_with_files(test_files, test_labels, raw_thresholds, avg_thresholds):
         for ind, labels in enumerate(class_labels):
             true_positives, false_positives, true_negatives, false_negatives, accuracy, precision = find_metrics(
                 labels)
-            print("      " + dist_names[ind])
-            print(f"     true_positives  :{true_positives}")
-            print(f"     false_positives :{false_positives}")
-            print(f"     true_negatives  :{true_negatives}")
-            print(f"     false_negatives :{false_negatives}")
-            print(f"     Accuracy        :{accuracy}")
-            print(f"     Precision       :{precision}")
+            print("     " + dist_names[ind])
+            print(f"        true_positives  :{true_positives}")
+            print(f"        false_positives :{false_positives}")
+            print(f"        true_negatives  :{true_negatives}")
+            print(f"        false_negatives :{false_negatives}")
+            print(f"        Accuracy        :{accuracy}")
+            print(f"        Precision       :{precision}")
 
     avg_distances = np.array(
-        [distance.distances(reference_files, f, 'avg') for f in test_files])
-    avg_classifications = 1 if avg_distances < avg_thresholds else 0
-    print_results('avg', avg_classifications)
+        [distance.distances(reference_files, f, 'avg') for f in test_files]).T
+    print(avg_distances)
+    class_labels = np.zeros(avg_distances.shape)
+    for i in range(4):
+        print(avg_thresholds[i])
+        class_labels[i][avg_distances[i] < avg_thresholds[i]] = 1
 
-    raw_distances = np.array(
-        [distance.distances(reference_files, f, 'raw') for f in test_files])
-    raw_classifications = 1 if avg_distances < raw_thresholds else 0
-    print_results('raw', raw_classifications)
+    print(class_labels)
+    print_results('avg', class_labels)
+
+    # raw_distances = np.array(
+    #     [distance.distances(reference_files, f, 'raw') for f in test_files])
+    # raw_classifications = 1 if avg_distances < raw_thresholds else 0
+    # print_results('raw', raw_classifications)
+
+
+raw_thresholds, avg_thresholds = determine_thresholds()
+test_files = ["data/k1.txt", "data/k2.txt", "data/youkuan1.txt"]
+labes = np.array([1, 1, 0])
+test_with_files(test_files, labes, raw_thresholds, avg_thresholds)

@@ -166,7 +166,7 @@ def determine_thresholds(reference_files):
 
 #Takes in test_files and labels, classifies the files based on threshold and print information about the classification
 #for each distance metric
-def test_with_files(test_files, test_labels, raw_thresholds, avg_thresholds):
+def test_with_files(test_files, test_labels, raw_thresholds, avg_thresholds,reference_files):
 
     def find_metrics(labels):
         positives = np.sum(labels)
@@ -218,7 +218,7 @@ def main ():
     avg_thresholds, raw_thresholds = determine_thresholds(reference_files)
     test_files = [f"data/k{12+i}.txt" for i in range(9)] + [f"data/siqi{10 + i}.txt" for i in range(6)] + [f"data/wanching{2 + i}.txt" for i in range(4)]
     labels = np.array([1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0])
-    test_with_files(test_files, labels,raw_thresholds, avg_thresholds)
+    test_with_files(test_files, labels,raw_thresholds, avg_thresholds,reference_files)
 
 
 if (__name__ == "__main__"):

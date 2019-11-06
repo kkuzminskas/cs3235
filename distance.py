@@ -1,9 +1,11 @@
+
 import prep_data
 import dist_analysis
 import json
 import numpy as np
 
-def extract_norm_x_y_t (filename):
+
+def extract_norm_x_y_t(filename):
 
     try:
         file = open(filename, "r")
@@ -16,7 +18,8 @@ def extract_norm_x_y_t (filename):
     tracking_data = [l for l in data if l['category'] ==
                      "tracker" and l['values']['frame']['state'] == 7]
 
-    time_stamps = np.array([l['values']['frame']['time'] for l in tracking_data])
+    time_stamps = np.array([l['values']['frame']['time']
+                            for l in tracking_data])
     time_stamps = time_stamps - time_stamps[0]
 
     x_y_data = np.array([(l['values']['frame']['avg']['x'],
@@ -26,15 +29,13 @@ def extract_norm_x_y_t (filename):
     return dist_analysis.whiten(x_y_t)
 
 
-
-def eyenalysis (filename):
+def eyenalysis(filename):
     reference_files = [f"data/k{i+1}.txt" for i in range(8)]
     norm_x_y_t = extract_norm_x_y_t(filename)
     sum = 0
-    for f in reference_files :
+    for f in reference_files:
         ref_norm_x_y_t = extract_norm_x_y_t(f)
         sum += dist_analysis.eyenalysis_distance(norm_x_y_t, ref_norm_x_y_t)
-    
+
     # threshold determined experimentally
     return (sum / len(reference_files)) < 0.78549708
-

@@ -1,13 +1,7 @@
-
-import matplotlib
 import numpy as np
-
-# save thresholds
-import pickle
 import prep_data
 import json
 import numpy as np
-
 
 
 #devides each column of data by its standard deviations
@@ -225,3 +219,7 @@ def main ():
     test_files = [f"data/k{12+i}.txt" for i in range(9)] + [f"data/siqi{10 + i}.txt" for i in range(6)] + [f"data/wanching{2 + i}.txt" for i in range(4)]
     labels = np.array([1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0])
     test_with_files(test_files, labels,raw_thresholds, avg_thresholds)
+
+
+if (__name__ == "__main__"):
+    main()

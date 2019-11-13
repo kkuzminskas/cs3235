@@ -17,10 +17,10 @@
                 {{ form.username.label }}<br>
                 {{ form.username(size=32) }}<br><br>
 
-                {{form.username.data}}
+                <!--{{form.username.data}} -->
                 {{ form.password.label }}<br>
                 <button type="button" class="button-style" onclick="window.location.href='{{ url_for('recording') }}';">Start Recording</button><br><br>
-
+                
 
                 {% with messages = get_flashed_messages() %}
                 {% if messages %}
@@ -33,12 +33,19 @@
 
                 <!-- {{ form.password(size=32) }}<br><br> -->
 
+                <button type="button" class="button-style" onclick="window.location.href='{{ url_for('calibrate') }}';">Calibrate</button><br><br>
+            
+
                 <br><br>
                 <center>
                     {{ form.submit(class_="button-style-login") }}
                     <br>
                 </center>
             </form>
+
+            
+
+
         </div>
     </div>
 </body>

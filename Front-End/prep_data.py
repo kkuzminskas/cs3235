@@ -40,17 +40,17 @@ def transform_vals(prev_key, keys, final_output, val):
             final_output[prev_key + k].append(vals)
 
 
-def clean_data(file_name="eyetribe_output_test.txt", raw=False):
+def clean_data(file_name="eyetribe_output_test.txt"):
     # if raw:
     #     print('clean')
     #     transform_file(file_name)
-    print("clean")
+    
     files = open(file_name, "r")
     data = files.read()
     try:
         d2 = json.loads(data)
     except:
-        print("a")
+        
         files.close()
         transform_file(file_name)
         files = open(file_name, "r")
@@ -72,6 +72,7 @@ def clean_data(file_name="eyetribe_output_test.txt", raw=False):
             transform_vals('', keys, final_output, val['values']['frame'])
 
     pd_data = pd.DataFrame.from_dict(final_output)
+    # print(pd_data.columns)
     features = ["time", "avg_x", "avg_y"]
     return pd_data[features]
 
@@ -80,6 +81,6 @@ def clean_data(file_name="eyetribe_output_test.txt", raw=False):
 
 if __name__ == '__main__':
     # get data
-    # data = clean_data("eyetribe_output_copy.txt")
+    # data = clean_data("data/k1.txt")
     # data = clean_data("test.txt")
     x=2

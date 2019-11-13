@@ -50,7 +50,7 @@
 
 		var minutesLabel = document.getElementById("minutes");
 		var secondsLabel = document.getElementById("seconds");
-		var totalSeconds = 0;
+		var totalSeconds = -1;
 		setInterval(setTime, 1000);
 
 		function setTime() {
@@ -58,7 +58,9 @@
 			secondsLabel.innerHTML = pad(totalSeconds % 60);
 			minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
 			if ((totalSeconds % 5) == 0){
-				playSound();
+				if (totalSeconds != 0){
+					playSound();
+				}
 			}
 		}
 

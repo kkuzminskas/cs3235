@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block pagestyles %}
+    <link rel="stylesheet" href='/static/login.css' />
+{% endblock %}
+
+{% block content %}
+	<div>
+		<h1>Calibration Steps</h1>
+		<ol>
+			<li>Wait for the Eye Tribe UI to appear (should take 1-2 seconds).</li>
+			<li>Position Yourself so your eyes are in the center and the background is green as shown below.
+				<br>
+				<img style="width:70%;"src="{{ url_for('static', filename='eye_position.png') }}" alt="correct_eye_position">
+			</li>
+			<li>Click the Calibrate button to calibrate.</li>
+			<li>Once you have calibrated the Eye Tribe, return to this window and return to Login Page.</li>
+		</ol>
+    	<button type="button" class="button-style" onclick="window.location.href='{{ url_for('login') }}';">Return to Login</button><br><br>
+            
+	</div>
+{% endblock %}

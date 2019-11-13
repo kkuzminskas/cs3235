@@ -1,22 +1,22 @@
 from app import db
 from app.models import User
 
-u = User(username='alice')
+u = User(username='youkuan')
 u.set_password('12345')
 db.session.add(u)
 db.session.commit()
 
-u = User(username='bob')
-u.set_password('53213')
+u = User(username='siqi')
+u.set_password('1349')
 db.session.add(u)
 db.session.commit()
 
-u = User(username='charlie')
+u = User(username='ahmed')
 u.set_password('67890')
 db.session.add(u)
 db.session.commit()
 
-u = User(username='k1')
+u = User(username='kendall')
 u.set_password('1359')
 db.session.add(u)
 db.session.commit()

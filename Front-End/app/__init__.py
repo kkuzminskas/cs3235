@@ -13,7 +13,6 @@ from flask_socketio import SocketIO, emit
 
 app = Flask(__name__)
 app.config.from_object('config')
-socketio = SocketIO(app)
 
 app.config.from_object(Config)
 db = SQLAlchemy(app)

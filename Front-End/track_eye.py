@@ -3,8 +3,6 @@ import os
 import socket
 import sys
 import json
-import subprocess
-import turtle
 from my_constants import *
 
 def get_data():
@@ -15,8 +13,8 @@ def get_data():
         sock.connect((HOST, PORT))
         a = 0
         f = open("test.txt", "w+")
-        global RUNNING
-        while RUNNING:
+        # global RUNNING
+        while a < MAX_LOOP:
             # data = json.dumps(CHECK_CALIBRATION)
             data = " "
             sock.sendall(bytes(data + "\n", "utf-8"))
@@ -27,8 +25,6 @@ def get_data():
             # print("Sent:     {}".format(data))
             # print("Received: {}".format(received))
             f.write(received)
-            if a > MAX_LOOP:
-                break;
             a+=1
     print(a)
     print("closed")
